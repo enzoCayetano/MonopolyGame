@@ -1,4 +1,3 @@
 # MonopolyGame
-# MonopolyGame
-# MonopolyGame
-# MonopolyGame
+
+Monpoly game in c++# MonopolyGame
