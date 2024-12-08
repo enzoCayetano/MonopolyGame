@@ -1,28 +1,37 @@
 #pragma once
 #include <iostream>
-#include <map>
 #include "Player.h"
 #include "Property.h"
 #include "PlayerManager.h"
 
+struct GraphNode;
+
 class Board
 {
 private:
-    std::map<int, Property> board; // The board with property positions
-    
+    GraphNode* head;
+    GraphNode* tail;
+
+    GraphNode* createGraphNode(Property* property);
+
 public:
-    const std::map<int, Property>& getBoard() const;
-    void setBoard(const std::map<int, Property>& newBoard);
-    void addProperty(int position, const Property& property);
-    Property& getProperty(int position);
-    int getSize() const;
-    
+    Board();  // constructor
+
+    // function to initialize the board as a graph
+    void initializeBoard();
+
+    // function to display the board status (properties in the graph)
     void displayBoardStatus() const;
 
-    // Initialize property spaces on the board
-    // 40 spaces in total
-    void initializeBoard();
-    
-    // Handle property within Board class
+    // function to handle property based on player landing
     void handleProperty(Player& player, Property& property);
+
+    // function to move player on the graph (by number of steps)
+    void movePlayer(Player& player, int steps);
+
+    // other functions
+    GraphNode* getHead() const;
+    GraphNode* getTail() const;
+    int getSize() const;
+    Property& getProperty(int position);
 };
