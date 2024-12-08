@@ -22,4 +22,6 @@ public:
     void addPlayer(const std::string& playerName);
     Player* getNextPlayer();
     void displayPlayerStats(const Player& player, const Board& board);
+    int calculateCumulativeScore() const;
+    int calculateCumulativeScoreRecursive(std::list<Player>::const_iterator current, std::list<Player>::const_iterator end);
 };
