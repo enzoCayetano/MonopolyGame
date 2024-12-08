@@ -52,3 +52,31 @@ void PlayerManager::displayPlayerStats(const Player& player, const Board& board)
     std::cout << "Total Assets: $" << totalAssets << std::endl;
     std::cout << "Number of Properties Owned: " << player.getProperties().size() << std::endl;
 }
+
+int PlayerManager::calculateCumulativeScoreRecursive(std::list<Player>::const_iterator current, std::list<Player>::const_iterator end, const Board& board) const
+{
+    if (current == end)
+        return 0;
+
+    int playerScore = current->getMoney();
+
+    // Calculate property value contribution
+    for (const auto& propertyName : current->getProperties())
+    {
+        auto it = std::find_if(board.getBoard().begin(), board.getBoard().end(),
+            [&propertyName](const auto& pair) { return pair.second.getName() == propertyName; });
+        if (it != board.getBoard().end())
+        {
+            playerScore += it->second.getCost(); // Add property cost to player's score
+        }
+    }
+
+    // Recursive call to process the next player
+    return playerScore + calculateCumulativeScoreRecursive(std::next(current), end, board);
+}
+
+int PlayerManager::calculateCumulativeScore(const Board& board) const
+{
+    auto it = players.begin();
+    return calculateCumulativeScoreRecursive(it, players.end(), board);
+}
