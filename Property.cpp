@@ -1,13 +1,10 @@
 #include "Property.h"
 
-// Default constructor
 Property::Property() : name(""), cost(0), rent(0), owner("Bank"), isOwned(false) {}
 
-// Parameter constructor
 Property::Property(const std::string& n, int c, int r)
     : name(n), cost(c), rent(r), owner("Bank"), isOwned(false) {}
 
-// Getters & Setters
 std::string Property::getName() const { return name; }
 int Property::getCost() const { return cost; }
 int Property::getRent() const { return rent; }
