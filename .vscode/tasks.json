@@ -2,18 +2,27 @@
   "tasks": [
     {
       "type": "cppbuild",
-      "label": "C/C++: clang build active file",
-      "command": "/usr/bin/clang",
+      "label": "C/C++: clang++ build entire project",
+      "command": "/usr/bin/clang++",
       "args": [
         "-fcolor-diagnostics",
         "-fansi-escape-codes",
         "-g",
-        "${file}",
+        "-std=c++14",
+        "/Users/enzo/Desktop/School/C++/MonopolyProject/main.cpp",
+        "/Users/enzo/Desktop/School/C++/MonopolyProject/Player.cpp",
+        "/Users/enzo/Desktop/School/C++/MonopolyProject/PlayerManager.cpp",
+        "/Users/enzo/Desktop/School/C++/MonopolyProject/Board.cpp",
+        "/Users/enzo/Desktop/School/C++/MonopolyProject/Property.cpp",
+        "/Users/enzo/Desktop/School/C++/MonopolyProject/Deck.cpp",
+        "/Users/enzo/Desktop/School/C++/MonopolyProject/MonopolyGame.cpp",
+        "/Users/enzo/Desktop/School/C++/MonopolyProject/CommunityChestCard.cpp",
+        "/Users/enzo/Desktop/School/C++/MonopolyProject/ChanceCard.cpp",
         "-o",
-        "${fileDirname}/${fileBasenameNoExtension}"
+        "/Users/enzo/Desktop/School/C++/MonopolyProject/MonopolyProject" // Output executable
       ],
       "options": {
-        "cwd": "${fileDirname}"
+        "cwd": "/Users/enzo/Desktop/School/C++/MonopolyProject"
       },
       "problemMatcher": [
         "$gcc"
